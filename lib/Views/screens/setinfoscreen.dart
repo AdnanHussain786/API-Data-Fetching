@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:quizapp/Views/screens/home/homescreen.dart';
 import 'package:quizapp/constants/colors.dart';
 import 'package:quizapp/constants/mycustombutton.dart';
 import 'package:quizapp/constants/textstylehelper.dart';
@@ -154,7 +155,13 @@ class _SetInformationScreenState extends State<SetInformationScreen> {
                     height: 57.h,
                     width: 340.w,
                     radius: 10,
-                    onClick: () {}),
+                    onClick: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => HomeScreen(),
+                          ));
+                    }),
               ),
             ],
           ),

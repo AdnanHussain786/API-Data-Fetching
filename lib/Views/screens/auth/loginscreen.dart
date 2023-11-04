@@ -36,7 +36,7 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.only(left: 15, right: 15, top: 30),
+        padding: const EdgeInsets.only(left: 15, right: 15, top: 30).r,
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -112,15 +112,12 @@ class _LoginScreenState extends State<LoginScreen> {
                           ));
                     },
                     child: Container(
-                      padding: const EdgeInsets.all(8),
-                      child: Text(
-                        'Forgot Password?',
-                        style: TextStyle(
-                          color:
-                              MyCustomColors().kBlackColor2, // Set your color
-                        ),
-                      ),
-                    ),
+                        padding: EdgeInsets.all(8.r),
+                        child: TextStyleHelper().mytext(
+                            'Forgot Password?',
+                            13.sp,
+                            FontWeight.w500,
+                            MyCustomColors().kBlackColor2)),
                   ),
                 ],
               ),
@@ -128,7 +125,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 10.h,
               ),
               Padding(
-                padding: const EdgeInsets.all(15.0),
+                padding: EdgeInsets.all(15.0.r),
                 child: RoundButton(
                     text: 'Login',
                     textColor: MyCustomColors().kWhiteColor,
@@ -136,14 +133,14 @@ class _LoginScreenState extends State<LoginScreen> {
                     borderColor: MyCustomColors().kPrimaryColor,
                     height: 57.h,
                     width: 340.w,
-                    radius: 10,
+                    radius: 10.r,
                     onClick: () {}),
               ),
-              const SizedBox(
-                height: 40,
+              SizedBox(
+                height: 40.h,
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 120, right: 120),
+                padding: const EdgeInsets.only(left: 120, right: 120).r,
                 child: TextStyleHelper().mytext('or sign in with', 12.sp,
                     FontWeight.w500, MyCustomColors().kBlackColor3),
               ),
@@ -160,7 +157,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         width: 150.w,
                         height: 55.h,
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(10.r),
                           border: Border.all(
                             color: MyCustomColors()
                                 .kBlackColor3, // Solid line color
@@ -179,7 +176,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         width: 150.w,
                         height: 55.h,
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(10).r,
                           border: Border.all(
                             color: MyCustomColors()
                                 .kBlackColor3, // Solid line color

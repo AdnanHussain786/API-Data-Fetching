@@ -18,8 +18,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final passwordcontroller = TextEditingController();
   final confirmpasswordcontroller = TextEditingController();
 
-  bool rememberMe = false;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,7 +36,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.only(left: 15, right: 15, top: 30),
+        padding: const EdgeInsets.only(left: 15, right: 15, top: 30).r,
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -50,14 +48,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 MyCustomColors().kBlackColor,
               ),
               SizedBox(height: 10.h),
-              Padding(
-                padding: const EdgeInsets.only(left: 20),
-                child: TextStyleHelper().mytext(
-                  'Full Name',
-                  13.sp,
-                  FontWeight.w500,
-                  MyCustomColors().kBlackColor,
-                ),
+              TextStyleHelper().mytext(
+                'Full Name',
+                13.sp,
+                FontWeight.w500,
+                MyCustomColors().kBlackColor,
               ),
               TextStyleHelper().mInputFields(
                 fullNamecontroller,
@@ -69,19 +64,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 'Name',
                 335,
                 50,
-                15,
-                15,
+                0,
+                0,
                 10,
               ),
               SizedBox(height: 20.h),
-              Padding(
-                padding: const EdgeInsets.only(left: 20),
-                child: TextStyleHelper().mytext(
-                  'Email',
-                  13.sp,
-                  FontWeight.w500,
-                  MyCustomColors().kBlackColor,
-                ),
+              TextStyleHelper().mytext(
+                'Email',
+                13.sp,
+                FontWeight.w500,
+                MyCustomColors().kBlackColor,
               ),
               TextStyleHelper().mInputFields(
                 emailcontroller,
@@ -93,19 +85,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 'Password',
                 335,
                 50,
-                15,
-                15,
+                0,
+                0,
                 10,
               ),
               SizedBox(height: 20.h),
-              Padding(
-                padding: const EdgeInsets.only(left: 20),
-                child: TextStyleHelper().mytext(
-                  'Password',
-                  13.sp,
-                  FontWeight.w500,
-                  MyCustomColors().kBlackColor,
-                ),
+              TextStyleHelper().mytext(
+                'Password',
+                13.sp,
+                FontWeight.w500,
+                MyCustomColors().kBlackColor,
               ),
               TextStyleHelper().mInputFields(
                 passwordcontroller,
@@ -117,19 +106,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 'Password',
                 335,
                 50,
-                15,
-                15,
+                0,
+                0,
                 10,
               ),
               SizedBox(height: 20.h),
-              Padding(
-                padding: const EdgeInsets.only(left: 20),
-                child: TextStyleHelper().mytext(
-                  'Confirm Password',
-                  13.sp,
-                  FontWeight.w500,
-                  MyCustomColors().kBlackColor,
-                ),
+              TextStyleHelper().mytext(
+                'Confirm Password',
+                13.sp,
+                FontWeight.w500,
+                MyCustomColors().kBlackColor,
               ),
               TextStyleHelper().mInputFields(
                 confirmpasswordcontroller,
@@ -141,16 +127,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 'Confirm Password',
                 335,
                 50,
-                15,
-                15,
+                0,
+                0,
                 10,
               ),
-              SizedBox(height: 5.h),
               SizedBox(
-                height: 10.h,
+                height: 15.h,
               ),
               Padding(
-                padding: const EdgeInsets.all(15.0),
+                padding: const EdgeInsets.all(15.0).r,
                 child: RoundButton(
                     text: 'Create Account',
                     textColor: MyCustomColors().kWhiteColor,
@@ -158,7 +143,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     borderColor: MyCustomColors().kPrimaryColor,
                     height: 57.h,
                     width: 335.w,
-                    radius: 10,
+                    radius: 10.r,
                     onClick: () {}),
               ),
               SizedBox(
