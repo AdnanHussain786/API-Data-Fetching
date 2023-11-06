@@ -3,15 +3,18 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:quizapp/Views/screens/home/specific_category.dart';
 import 'package:quizapp/constants/colors.dart';
 import 'package:quizapp/constants/mycustombutton.dart';
-import 'package:quizapp/constants/textstylehelper.dart';
+import 'package:quizapp/constants/textstylehelper1.dart';
 
 class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _HomeScreenState createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int _selectedIndex = 0;
+  final int _selectedIndex = 0;
 
   void _onItemTapped(int index) {
     // You can add logic here to navigate to different screens based on the selected tab.
@@ -27,12 +30,12 @@ class _HomeScreenState extends State<HomeScreen> {
     {
       'title': 'Physics II',
       'quizzes': 14,
-      'color': Color(0xffFFA800),
+      'color': const Color(0xffFFA800),
     },
     {
       'title': 'Chemistry',
       'quizzes': 28,
-      'color': Color.fromARGB(255, 64, 147, 161),
+      'color': const Color.fromARGB(255, 64, 147, 161),
     },
     // Add more data for other categories
   ];
@@ -40,18 +43,18 @@ class _HomeScreenState extends State<HomeScreen> {
   List<Map<String, dynamic>> imageAndContainerData = [
     {
       'image': 'assets/images/Rectangle1.png',
-      'color': Color(0xffFFA800),
+      'color': const Color(0xffFFA800),
       'text': '16 questions',
     },
     {
       'image': 'assets/images/Rectangle2.png',
-      'color': Color(0xffAB0BCF),
+      'color': const Color(0xffAB0BCF),
       'text': '20 questions',
     },
     // Add more data for other images
     {
       'image': 'assets/images/Rectangle2.png',
-      'color': Color(0xffAB0BC5),
+      'color': const Color(0xffAB0BC5),
       'text': '24 questions',
     },
   ];
@@ -81,7 +84,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     color: MyCustomColors()
                         .kBlackColor5
                         .withOpacity(0.12), // Shadow color
-                    offset: Offset(0, -4), // Negative Y offset to lift the bar
+                    offset: const Offset(
+                        0, -4), // Negative Y offset to lift the bar
                     blurRadius: 10, // Blur radius
                     spreadRadius: 0, // Spread radius
                   ),
@@ -156,7 +160,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   Container(
                     width: 12.0.w,
                     height: 12.48.h,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       shape: BoxShape.circle,
                       color: Colors.red, // Notification badge color
                     ),
@@ -186,7 +190,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     boxShadow: [
                       BoxShadow(
                         color: Colors.grey.withOpacity(0.12), // Shadow color
-                        offset: Offset(0, 4), // X, Y offset
+                        offset: const Offset(0, 4), // X, Y offset
                         blurRadius: 10, // Blur radius
                         spreadRadius: 0, // Spread radius
                       ),
@@ -218,10 +222,10 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: Row(
                           children: [
                             Padding(
-                              padding: EdgeInsets.symmetric(
+                              padding: const EdgeInsets.symmetric(
                                       vertical: 6, horizontal: 10)
                                   .r,
-                              child: VerticalDivider(),
+                              child: const VerticalDivider(),
                             ),
                             Image.asset('assets/images/filter.png'),
                           ],
@@ -258,11 +262,11 @@ class _HomeScreenState extends State<HomeScreen> {
                     TextStyleHelper().mytext('Categories', 20, FontWeight.w700,
                         MyCustomColors().kBlackColor),
                     SizedBox(
-                      width: 200.w,
+                      width: 190.w,
                     ),
                     Expanded(
                       child: TextStyleHelper().mytext('View All', 12,
-                          FontWeight.w700, MyCustomColors().kBlackColor3),
+                          FontWeight.w500, MyCustomColors().kBlackColor3),
                     ),
                   ],
                 ),
@@ -284,7 +288,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => SpecificCategoryScreen(),
+                              builder: (context) =>
+                                  const SpecificCategoryScreen(),
                             ));
                       },
                       child: Container(
@@ -292,8 +297,11 @@ class _HomeScreenState extends State<HomeScreen> {
                           borderRadius: BorderRadius.circular(15),
                           color: category['color'],
                         ),
+
+                        width: 150.w, // Set the width
+                        margin: const EdgeInsets.only(left: 10),
                         child: Padding(
-                          padding: EdgeInsets.only(left: 10, top: 10).r,
+                          padding: const EdgeInsets.only(left: 10, top: 10).r,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -315,9 +323,6 @@ class _HomeScreenState extends State<HomeScreen> {
                             ],
                           ),
                         ),
-
-                        width: 150.w, // Set the width
-                        margin: EdgeInsets.only(left: 10),
                       ),
                     );
                   },
@@ -335,11 +340,11 @@ class _HomeScreenState extends State<HomeScreen> {
                     TextStyleHelper().mytext('Top Quiz    ', 20,
                         FontWeight.w700, MyCustomColors().kBlackColor),
                     SizedBox(
-                      width: 200.w,
+                      width: 190.w,
                     ),
                     Expanded(
                       child: TextStyleHelper().mytext('View All', 12,
-                          FontWeight.w700, MyCustomColors().kBlackColor3),
+                          FontWeight.w500, MyCustomColors().kBlackColor3),
                     ),
                   ],
                 ),
@@ -363,7 +368,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
                     return Container(
                       width: 150.w, // Set the width
-                      margin: EdgeInsets.only(left: 10).r,
+                      margin: const EdgeInsets.only(left: 10).r,
                       child: Stack(
                         children: [
                           // Use ClipRRect to create a circular border radius
@@ -381,7 +386,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               height: 18.h,
                               width: 79.w, // Set the height
                               decoration: BoxDecoration(
-                                borderRadius: BorderRadius.only(
+                                borderRadius: const BorderRadius.only(
                                     topLeft: Radius.zero,
                                     topRight: Radius.circular(8),
                                     bottomLeft: Radius.circular(16),
@@ -424,14 +429,11 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
 
               Padding(
-                padding: const EdgeInsets.only(left: 10, right: 10),
+                padding: const EdgeInsets.only(left: 10, right: 10).r,
                 child: Row(
                   children: [
-                    TextStyleHelper().mytext('Recently added', 20,
+                    TextStyleHelper().mytext('Recently added', 20.sp,
                         FontWeight.w700, MyCustomColors().kBlackColor),
-                    SizedBox(
-                      width: 200.w,
-                    ),
                   ],
                 ),
               ),
@@ -453,7 +455,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
                     return Container(
                       width: 150.w, // Set the width
-                      margin: EdgeInsets.only(left: 10).r,
+                      margin: const EdgeInsets.only(left: 10).r,
                       child: Stack(
                         children: [
                           // Use ClipRRect to create a circular border radius
@@ -471,7 +473,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               height: 18.h,
                               width: 79.w, // Set the height
                               decoration: BoxDecoration(
-                                borderRadius: BorderRadius.only(
+                                borderRadius: const BorderRadius.only(
                                     topLeft: Radius.zero,
                                     topRight: Radius.circular(8),
                                     bottomLeft: Radius.circular(16),

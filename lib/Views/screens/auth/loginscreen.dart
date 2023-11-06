@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:quizapp/Views/screens/QuizScreens/quizdetails.dart';
 import 'package:quizapp/Views/screens/auth/registerscreen.dart';
 import 'package:quizapp/Views/screens/forgotPassword/forgotpasswordscreen.dart';
 import 'package:quizapp/constants/colors.dart';
 import 'package:quizapp/constants/mycustombutton.dart';
-import 'package:quizapp/constants/textstylehelper.dart';
+import 'package:quizapp/constants/textstylehelper1.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -134,7 +135,13 @@ class _LoginScreenState extends State<LoginScreen> {
                     height: 57.h,
                     width: 340.w,
                     radius: 10.r,
-                    onClick: () {}),
+                    onClick: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const QuizDetailsScreen(),
+                          ));
+                    }),
               ),
               SizedBox(
                 height: 40.h,

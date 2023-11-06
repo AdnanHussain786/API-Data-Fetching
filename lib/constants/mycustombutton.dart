@@ -80,3 +80,75 @@ class RoundButton extends StatelessWidget {
     );
   }
 }
+
+class RoundButton1 extends StatelessWidget {
+  final Color backgroundColor;
+  final Color borderColor;
+  final double borderWidth;
+  final double height;
+  final double width;
+  final double radius;
+  final VoidCallback onClick;
+  final bool loading;
+  final bool isIcon;
+  final List<RichText>
+      richTexts; // List of RichText widgets for different texts
+
+  const RoundButton1({
+    Key? key,
+    required this.richTexts,
+    required this.backgroundColor,
+    required this.borderColor,
+    this.borderWidth = 1.0,
+    required this.height,
+    required this.width,
+    required this.radius,
+    required this.onClick,
+    this.loading = false,
+    this.isIcon = false,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () {
+        return onClick();
+      },
+      child: Container(
+        height: height,
+        width: width,
+        decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: Colors.pink.withOpacity(0.2),
+              blurRadius: 40,
+              offset: const Offset(0, 10),
+            ),
+          ],
+          color: backgroundColor,
+          borderRadius: BorderRadius.circular(radius),
+          border: Border.all(
+            color: borderColor,
+            width: borderWidth,
+          ),
+        ),
+        child: Center(
+          child: loading
+              ? const CircularProgressIndicator(
+                  color: Colors.white,
+                  strokeWidth: 3,
+                )
+              : Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: richTexts.map((richText) {
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 1),
+                      child: richText,
+                    );
+                  }).toList(),
+                ),
+        ),
+      ),
+    );
+  }
+}

@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:quizapp/Views/screens/home/homescreen.dart';
 import 'package:quizapp/constants/colors.dart';
 import 'package:quizapp/constants/mycustombutton.dart';
-import 'package:quizapp/constants/textstylehelper.dart';
+import 'package:quizapp/constants/textstylehelper1.dart';
 
 class SetInformationScreen extends StatefulWidget {
   const SetInformationScreen({super.key});
@@ -159,7 +159,7 @@ class _SetInformationScreenState extends State<SetInformationScreen> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => HomeScreen(),
+                            builder: (context) => const HomeScreen(),
                           ));
                     }),
               ),

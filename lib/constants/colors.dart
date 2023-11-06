@@ -8,6 +8,11 @@ class MyCustomColors {
   Color kPrimaryColor2 = const Color(0xff2B74D2);
   Color kPrimaryColor3 = const Color(0xff1F65C4);
   Color kPrimaryColor4 = const Color(0xff9FBBE0);
+  Color kPrimaryColor5 = const Color(0xff0452B7);
+
+// Checkboxes Color
+
+  Color kPrimaryColor6 = const Color(0xff7367F0);
 
   // Secondary Colors
 
@@ -31,6 +36,7 @@ class MyCustomColors {
   Color kBlackColor3 = const Color(0xff989898);
   Color kBlackColor4 = const Color(0xffC7C7C7);
   Color kBlackColor5 = const Color(0xffD9D9D9);
+  Color kBlackColor6 = const Color(0xff000000);
 
   //   Grey
 
@@ -39,4 +45,7 @@ class MyCustomColors {
   // Supoortive Color
 
   Color kSupporive = const Color(0xffAFAFAF);
+
+  //  Theme Color
+  Color kThemeColor = const Color(0xff6E6B7B);
 }

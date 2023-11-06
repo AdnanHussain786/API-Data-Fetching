@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quizapp/constants/colors.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class TextStyleHelper {
   final ValueNotifier<bool> _obscurePassword = ValueNotifier<bool>(true);
@@ -32,14 +33,14 @@ class TextStyleHelper {
     );
   }
 
-  Text mytext(String title, double fontSize, var fontWeight, Color color) {
+  Text mytext(
+      String title, double fontSize, FontWeight fontWeight, Color color) {
     return Text(
       title,
-      style: TextStyle(
+      style: GoogleFonts.dmSans(
         fontSize: fontSize,
         fontWeight: fontWeight,
         color: color,
-        fontFamily: 'Popphins',
       ),
     );
   }
