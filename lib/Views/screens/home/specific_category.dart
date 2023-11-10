@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:quizapp/Views/screens/QuizScreens/quizdetails.dart';
 import 'package:quizapp/constants/colors.dart';
+import 'package:quizapp/constants/quizscreenscontainersdata.dart';
 import 'package:quizapp/constants/textstylehelper1.dart';
 
 class SpecificCategoryScreen extends StatefulWidget {
@@ -12,56 +13,7 @@ class SpecificCategoryScreen extends StatefulWidget {
 }
 
 class _SpecificCategoryScreenState extends State<SpecificCategoryScreen> {
-  List<Map<String, dynamic>> categoriesData = [
-    {
-      'title': 'Computer\nScience',
-      'quizzes': 17,
-      'color': MyCustomColors().kPrimaryColor2,
-    },
-    {
-      'title': 'Physics II',
-      'quizzes': 14,
-      'color': const Color(0xffFFA800),
-    },
-    {
-      'title': 'Chemistry',
-      'quizzes': 28,
-      'color': const Color.fromARGB(255, 64, 147, 161),
-    },
-    // Add more data for other categories
-  ];
-
-  // Define a list of data for images and other information
-  List<Map<String, dynamic>> imageAndContainerData = [
-    {
-      'image': 'assets/images/Rectangle1.png',
-      'text': '16 questions',
-    },
-    {
-      'image': 'assets/images/Rectangle2.png',
-      'text': '20 questions',
-    },
-    // Add more data for other images
-    {
-      'image': 'assets/images/Rectangle2.png',
-      'text': '24 questions',
-    },
-  ];
-
-  List<String> textList1 = [
-    'Microprocessor in Computer\nScience',
-    'Guess the Wild animals\nnames',
-    'Guess the Wild animals\nnames'
-  ]; // For the first ListView
-
-  List<Color> containerColors = [
-    const Color(0xffFFA800),
-    const Color(0xffAB0BC5),
-    const Color(0xff29BFFF),
-    const Color(0xffEA5455),
-    const Color(0xff082A6F),
-    const Color(0xff01AB1C) // Add more colors as needed
-  ];
+  final quizscreencontainersdata = QuizScreensContainersData();
 
   TextEditingController searchController = TextEditingController();
 
@@ -190,8 +142,9 @@ class _SpecificCategoryScreenState extends State<SpecificCategoryScreen> {
                 physics: const NeverScrollableScrollPhysics(),
                 itemCount: 20, // Iterate 5 times
                 itemBuilder: (context, index) {
-                  final containerColor =
-                      containerColors[index % containerColors.length];
+                  final containerColor = quizscreencontainersdata
+                          .containerColors[
+                      index % quizscreencontainersdata.containerColors.length];
 
                   return Padding(
                     padding: const EdgeInsets.only(left: 10).w,

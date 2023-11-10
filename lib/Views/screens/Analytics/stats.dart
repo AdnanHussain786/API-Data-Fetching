@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:quizapp/Views/screens/Analytics/specificquizstats.dart';
-import 'package:quizapp/Views/screens/QuizScreens/quizdetails.dart';
-import 'package:quizapp/Views/screens/auth/loginscreen.dart';
-import 'package:quizapp/Views/screens/auth/registerscreen.dart';
 import 'package:quizapp/Views/screens/home/specific_category.dart';
+import 'package:quizapp/constants/bottom_navigation_bar.dart';
 import 'package:quizapp/constants/colors.dart';
+import 'package:quizapp/constants/quizscreenscontainersdata.dart';
 import 'package:quizapp/constants/textstylehelper1.dart';
 
 class StatsScreen extends StatefulWidget {
@@ -17,158 +16,15 @@ class StatsScreen extends StatefulWidget {
 }
 
 class _StatsScreenState extends State<StatsScreen> {
-  List<Color> containerColors = [
-    const Color(0xffFFA800),
-    const Color(0xffAB0BC5),
-    const Color(0xff29BFFF),
-    const Color(0xffEA5455),
-    const Color(0xff082A6F),
-    const Color(0xff01AB1C) // Add more colors as needed
-  ];
-  final int _selectedIndex = 0;
-
-  void _onItemTapped(int index) {
-    // You can add logic here to navigate to different screens based on the selected tab.
-    if (index == 0) {
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => StatsScreen(),
-          ));
-    }
-    if (index == 1) {
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => QuizDetailsScreen(),
-          ));
-    }
-    if (index == 2) {
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => LoginScreen(),
-          ));
-    }
-    if (index == 3) {
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => RegisterScreen(),
-          ));
-    }
-  }
+  final quizscreencontainerdata = QuizScreensContainersData();
 
   TextEditingController searchController = TextEditingController();
-  List<Map<String, dynamic>> categoriesData = [
-    {
-      'title': 'Computer\nScience',
-      'quizzes': 17,
-      'color': MyCustomColors().kPrimaryColor2,
-    },
-    {
-      'title': 'Physics II\n',
-      'quizzes': 14,
-      'color': const Color(0xffFFA800),
-    },
-    {
-      'title': 'Chemistry\n',
-      'quizzes': 28,
-      'color': const Color.fromARGB(255, 64, 147, 161),
-    },
-    // Add more data for other categories
-  ];
-  // Define a list of data for images and other information
-  List<Map<String, dynamic>> imageAndContainerData = [
-    {
-      'image': 'assets/images/Rectangle1.png',
-      'color': const Color(0xffFFA800),
-      'text': '16 questions',
-    },
-    {
-      'image': 'assets/images/Rectangle2.png',
-      'color': const Color(0xffAB0BCF),
-      'text': '20 questions',
-    },
-    // Add more data for other images
-    {
-      'image': 'assets/images/Rectangle2.png',
-      'color': const Color(0xffAB0BC5),
-      'text': '24 questions',
-    },
-  ];
-  List<String> textList1 = [
-    'Microprocessor in Computer\nScience',
-    'Guess the Wild animals\nnames',
-    'Guess the Wild animals\nnames'
-  ]; // For the first ListView
+  // For the first ListView
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        bottomNavigationBar: Padding(
-          padding: const EdgeInsets.only(left: 40, right: 50, bottom: 50),
-          child: Container(
-              height: 55.h,
-              width: 322.w, // Set the desired height
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12).r,
-              ),
-              child: ClipRRect(
-                  borderRadius: BorderRadius.circular(12).r,
-                  child: Wrap(
-                    children: [
-                      BottomNavigationBar(
-                        type: BottomNavigationBarType.fixed,
-
-                        unselectedItemColor: MyCustomColors().kBlackColor7,
-
-                        backgroundColor: MyCustomColors().kWhiteColor3,
-                        items: <BottomNavigationBarItem>[
-                          BottomNavigationBarItem(
-                            icon: SizedBox(
-                              width: 20.07.w,
-                              height: 20.57.h,
-                              child: Image.asset('assets/images/Home.png'),
-                            ), // Add your home icon image path
-                            label: 'Home',
-                          ),
-                          BottomNavigationBarItem(
-                            icon: SizedBox(
-                              width: 20.48.w,
-                              height: 20.71.h,
-                              child: Image.asset('assets/images/quiz.png'),
-                            ), // Add your search icon image path
-                            label: 'Stats',
-                          ),
-                          BottomNavigationBarItem(
-                            icon: SizedBox(
-                              width: 18.06.w,
-                              height: 21.51.h,
-                              child: Image.asset('assets/images/bag.png'),
-                            ), // Add your profile icon image path
-                            label: 'Profile',
-                          ),
-                          BottomNavigationBarItem(
-                            icon: SizedBox(
-                              width: 16.71.w,
-                              height: 18.h,
-                              child: Image.asset('assets/images/profile.png'),
-                            ), // Add your fourth icon image path
-                            label: 'Profile',
-                          ),
-                        ],
-                        currentIndex: _selectedIndex,
-                        selectedItemColor: MyCustomColors()
-                            .kPrimaryColor, // Change color as needed
-                        onTap: _onItemTapped,
-                        showSelectedLabels:
-                            false, // Hide labels to make it look cleaner
-                        showUnselectedLabels: false,
-                      ),
-                    ],
-                  ))),
-        ),
+        bottomNavigationBar: CustomBottomNavigationBar(),
         appBar: AppBar(
           centerTitle: true,
           title: TextStyleHelper().mytext(
@@ -298,7 +154,8 @@ class _StatsScreenState extends State<StatsScreen> {
                     itemCount: 20, // Iterate 5 times
                     itemBuilder: (context, index) {
                       final containerColor =
-                          containerColors[index % containerColors.length];
+                          quizscreencontainerdata.containerColors[index %
+                              quizscreencontainerdata.containerColors.length];
 
                       return QuizzCategoryWidget(
                         title: 'Microprocessor in computer Science',

@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:quizapp/Views/screens/Analytics/stats.dart';
 import 'package:quizapp/Views/screens/auth/registerscreen.dart';
 import 'package:quizapp/Views/screens/forgotPassword/forgotpasswordscreen.dart';
+import 'package:quizapp/constants/bottom_navigation_bar.dart';
 import 'package:quizapp/constants/colors.dart';
 import 'package:quizapp/constants/mycustombutton.dart';
 import 'package:quizapp/constants/textstylehelper1.dart';
