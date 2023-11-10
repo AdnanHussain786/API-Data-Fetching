@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:quizapp/Views/screens/setinfoscreen.dart';
+import 'package:quizapp/Views/screens/mainScreens/setinfoscreen.dart';
 import 'package:quizapp/constants/colors.dart';
 import 'package:quizapp/constants/mycustombutton.dart';
 import 'package:quizapp/constants/textstylehelper1.dart';
@@ -20,7 +20,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.transparent,
         shadowColor: Colors.transparent,
         title: TextStyleHelper().mytext('Forgot Password', 18.sp,
             FontWeight.w500, MyCustomColors().kBlackColor),
@@ -70,7 +70,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
               SizedBox(
                 height: 20.h,
               ),
-              TextStyleHelper().mytext('Reset Password', 22.sp, FontWeight.w500,
+              TextStyleHelper().mytext('Reset Password', 22.sp, FontWeight.w700,
                   MyCustomColors().kBlackColor),
               SizedBox(
                 height: 10.h,
@@ -78,13 +78,10 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
               TextStyleHelper().mytext('Set your new password', 12.sp,
                   FontWeight.w400, MyCustomColors().kBlackColor2),
               SizedBox(
-                height: 5.h,
-              ),
-              SizedBox(
-                height: 20.h,
+                height: 30.h,
               ),
               TextStyleHelper().mytext(
-                'Email',
+                'New Password',
                 13.sp,
                 FontWeight.w500,
                 MyCustomColors().kBlackColor,
@@ -125,26 +122,23 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                 10,
               ),
               SizedBox(
-                height: 80.h,
+                height: 130.h,
               ),
-              Padding(
-                padding: const EdgeInsets.all(15.0),
-                child: RoundButton(
-                    text: 'Reset',
-                    textColor: MyCustomColors().kWhiteColor,
-                    backgroundColor: MyCustomColors().kPrimaryColor,
-                    borderColor: MyCustomColors().kPrimaryColor,
-                    height: 57.h,
-                    width: 340.w,
-                    radius: 10,
-                    onClick: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const SetInformationScreen(),
-                          ));
-                    }),
-              ),
+              RoundButton(
+                  text: 'Reset',
+                  textColor: MyCustomColors().kWhiteColor,
+                  backgroundColor: MyCustomColors().kPrimaryColor,
+                  borderColor: MyCustomColors().kPrimaryColor,
+                  height: 57.h,
+                  width: 340.w,
+                  radius: 10,
+                  onClick: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const SetInformationScreen(),
+                        ));
+                  }),
             ],
           ),
         ),

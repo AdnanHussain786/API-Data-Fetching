@@ -38,6 +38,10 @@ class MyCustomColors {
   Color kBlackColor5 = const Color(0xffD9D9D9);
   Color kBlackColor6 = const Color(0xff000000);
 
+  Color kBlackColor7 = const Color(0xff07142E);
+
+  Color kBlackColor8 = const Color(0xff4B525B);
+
   //   Grey
 
   Color kGreyColor = const Color(0xffF5F4F8);
@@ -48,4 +52,24 @@ class MyCustomColors {
 
   //  Theme Color
   Color kThemeColor = const Color(0xff6E6B7B);
+
+  //  Notify Color
+
+  Color kNotifyColor = const Color(0xffEA5455);
+
+  //   True Questions
+
+  Color kTrueColor = const Color(0xff56AE56);
+
+  //   false Questions
+
+  Color kFalseColor = const Color(0xffF40000);
+
+  //   Correct Answers fill color
+
+  Color kTrueFillColor = const Color(0xff2C992C);
+
+  //   Red Color for Reset Analytics
+
+  Color kRedColor = const Color(0xffC70000);
 }

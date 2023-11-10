@@ -95,6 +95,7 @@ class _AnimatedDotsTextState extends State<AnimatedDotsText> {
       setState(() {
         numDots = (numDots % 3) + 1;
       });
+      timer.cancel();
     });
   }
 

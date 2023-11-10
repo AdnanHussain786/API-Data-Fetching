@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:quizapp/Views/screens/splashscreen.dart';
+import 'package:quizapp/Views/screens/mainScreens/splashscreen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
     ScreenUtil.init(
       context,
       designSize: const Size(375, 812), // Design size of your choice (iPhone X)
+      minTextAdapt: true,
     );
 
     return const MaterialApp(

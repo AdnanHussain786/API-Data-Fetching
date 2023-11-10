@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:quizapp/Views/screens/QuizScreens/quizdetails.dart';
+import 'package:quizapp/Views/screens/auth/loginscreen.dart';
+import 'package:quizapp/Views/screens/auth/registerscreen.dart';
 import 'package:quizapp/Views/screens/home/specific_category.dart';
 import 'package:quizapp/constants/colors.dart';
 import 'package:quizapp/constants/mycustombutton.dart';
@@ -18,6 +21,34 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void _onItemTapped(int index) {
     // You can add logic here to navigate to different screens based on the selected tab.
+    if (index == 0) {
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => HomeScreen(),
+          ));
+    }
+    if (index == 1) {
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => QuizDetailsScreen(),
+          ));
+    }
+    if (index == 2) {
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => LoginScreen(),
+          ));
+    }
+    if (index == 3) {
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => RegisterScreen(),
+          ));
+    }
   }
 
   TextEditingController searchController = TextEditingController();
@@ -28,12 +59,12 @@ class _HomeScreenState extends State<HomeScreen> {
       'color': MyCustomColors().kPrimaryColor2,
     },
     {
-      'title': 'Physics II',
+      'title': 'Physics II\n',
       'quizzes': 14,
       'color': const Color(0xffFFA800),
     },
     {
-      'title': 'Chemistry',
+      'title': 'Chemistry\n',
       'quizzes': 28,
       'color': const Color.fromARGB(255, 64, 147, 161),
     },
@@ -68,64 +99,67 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         bottomNavigationBar: Padding(
-          padding: const EdgeInsets.only(left: 15, right: 15, bottom: 20),
+          padding: const EdgeInsets.only(left: 40, right: 50, bottom: 50),
           child: Container(
-              height: 50.h,
-              width: 335.w, // Set the desired height
+              height: 55.h,
+              width: 322.w, // Set the desired height
               decoration: BoxDecoration(
-                color: MyCustomColors().kPrimaryColor, // Background color
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(20.r), // Adjust the radius as needed
-                  topRight:
-                      Radius.circular(20.r), // Adjust the radius as needed
-                ),
-                boxShadow: [
-                  BoxShadow(
-                    color: MyCustomColors()
-                        .kBlackColor5
-                        .withOpacity(0.12), // Shadow color
-                    offset: const Offset(
-                        0, -4), // Negative Y offset to lift the bar
-                    blurRadius: 10, // Blur radius
-                    spreadRadius: 0, // Spread radius
-                  ),
-                ],
+                borderRadius: BorderRadius.circular(12).r,
               ),
-              child: Wrap(
-                children: [
-                  BottomNavigationBar(
-                    items: <BottomNavigationBarItem>[
-                      BottomNavigationBarItem(
-                        icon: Image.asset(
-                            'assets/images/Home.png'), // Add your home icon image path
-                        label: 'Home',
-                      ),
-                      BottomNavigationBarItem(
-                        icon: Image.asset(
-                            'assets/images/quiz.png'), // Add your search icon image path
-                        label: 'Quiz',
-                      ),
-                      BottomNavigationBarItem(
-                        icon: Image.asset(
-                            'assets/images/bag.png'), // Add your profile icon image path
-                        label: 'Profile',
-                      ),
-                      BottomNavigationBarItem(
-                        icon: Image.asset(
-                            'assets/images/profile.png'), // Add your fourth icon image path
-                        label: 'Profile',
+              child: ClipRRect(
+                  borderRadius: BorderRadius.circular(12).r,
+                  child: Wrap(
+                    children: [
+                      BottomNavigationBar(
+                        type: BottomNavigationBarType.fixed,
+
+                        unselectedItemColor: MyCustomColors().kBlackColor7,
+
+                        backgroundColor: MyCustomColors().kWhiteColor3,
+                        items: <BottomNavigationBarItem>[
+                          BottomNavigationBarItem(
+                            icon: SizedBox(
+                              width: 20.07.w,
+                              height: 20.57.h,
+                              child: Image.asset('assets/images/Home.png'),
+                            ), // Add your home icon image path
+                            label: 'Home',
+                          ),
+                          BottomNavigationBarItem(
+                            icon: SizedBox(
+                              width: 20.48.w,
+                              height: 20.71.h,
+                              child: Image.asset('assets/images/quiz.png'),
+                            ), // Add your search icon image path
+                            label: 'Stats',
+                          ),
+                          BottomNavigationBarItem(
+                            icon: SizedBox(
+                              width: 18.06.w,
+                              height: 21.51.h,
+                              child: Image.asset('assets/images/bag.png'),
+                            ), // Add your profile icon image path
+                            label: 'Profile',
+                          ),
+                          BottomNavigationBarItem(
+                            icon: SizedBox(
+                              width: 16.71.w,
+                              height: 18.h,
+                              child: Image.asset('assets/images/profile.png'),
+                            ), // Add your fourth icon image path
+                            label: 'Profile',
+                          ),
+                        ],
+                        currentIndex: _selectedIndex,
+                        selectedItemColor: MyCustomColors()
+                            .kPrimaryColor, // Change color as needed
+                        onTap: _onItemTapped,
+                        showSelectedLabels:
+                            false, // Hide labels to make it look cleaner
+                        showUnselectedLabels: false,
                       ),
                     ],
-                    currentIndex: _selectedIndex,
-                    selectedItemColor: MyCustomColors()
-                        .kPrimaryColor, // Change color as needed
-                    onTap: _onItemTapped,
-                    showSelectedLabels:
-                        false, // Hide labels to make it look cleaner
-                    showUnselectedLabels: false,
-                  ),
-                ],
-              )),
+                  ))),
         ),
         appBar: AppBar(
           leadingWidth: 70.w,
@@ -142,7 +176,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           shadowColor: Colors.transparent,
-          backgroundColor: MyCustomColors().kWhiteColor,
+          backgroundColor: Colors.transparent,
           actions: [
             Padding(
               padding: const EdgeInsets.only(right: 15, top: 15).r,
@@ -160,9 +194,10 @@ class _HomeScreenState extends State<HomeScreen> {
                   Container(
                     width: 12.0.w,
                     height: 12.48.h,
-                    decoration: const BoxDecoration(
+                    decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: Colors.red, // Notification badge color
+                      color: MyCustomColors()
+                          .kNotifyColor, // Notification badge color
                     ),
                     child: Center(
                       child: TextStyleHelper().mytext(
@@ -182,7 +217,7 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Column(
             children: [
               Padding(
-                padding: EdgeInsets.all(15.0.r),
+                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
                 child: Container(
                   width: 388.w, // Set the width
                   height: 60.h, // Set the height
@@ -195,20 +230,27 @@ class _HomeScreenState extends State<HomeScreen> {
                         spreadRadius: 0, // Spread radius
                       ),
                     ],
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(10),
                   ),
                   child: Card(
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
+                      borderRadius: BorderRadius.circular(10),
                     ),
                     child: ListTile(
-                      leading: Image.asset('assets/images/Search.png'),
-                      title: TextField(
+                      leading: SizedBox(
+                        width: 30
+                            .w, // Reduce the width to bring the icon closer to text
+                        height: 30
+                            .h, // Reduce the height to bring the icon closer to text
+                        child: Image.asset('assets/images/Search.png'),
+                      ),
+                      title: TextFormField(
                         controller: searchController,
                         cursorColor: MyCustomColors().kSupporive,
                         decoration: InputDecoration(
                           hintText: "Ricerca",
                           hintStyle: TextStyle(
+                            color: MyCustomColors().kSupporive,
                             fontWeight: FontWeight.w500,
                             fontSize: 14.sp,
                             fontFamily: "Poppins",
@@ -217,24 +259,15 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
                       trailing: SizedBox(
-                        height: 40.h,
-                        width: 70.w,
-                        child: Row(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.symmetric(
-                                      vertical: 6, horizontal: 10)
-                                  .r,
-                              child: const VerticalDivider(),
-                            ),
-                            Image.asset('assets/images/filter.png'),
-                          ],
-                        ),
+                        width: 18.53.w,
+                        height: 18.h,
+                        child: Image.asset('assets/images/filter.png'),
                       ),
                     ),
                   ),
                 ),
               ),
+
               SizedBox(
                 height: 10.h,
               ),
@@ -312,14 +345,19 @@ class _HomeScreenState extends State<HomeScreen> {
                                 MyCustomColors().kWhiteColor,
                               ),
                               SizedBox(
-                                height: 40.h,
+                                height: 30,
                               ),
-                              TextStyleHelper().mytext(
-                                '${category['quizzes']} Quizzes',
-                                10.sp,
-                                FontWeight.w700,
-                                MyCustomColors().kWhiteColor,
-                              ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  TextStyleHelper().mytext(
+                                    '${category['quizzes']} Quizzes',
+                                    10.sp,
+                                    FontWeight.w700,
+                                    MyCustomColors().kWhiteColor,
+                                  ),
+                                ],
+                              )
                             ],
                           ),
                         ),
@@ -373,7 +411,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         children: [
                           // Use ClipRRect to create a circular border radius
                           ClipRRect(
-                            borderRadius: BorderRadius.circular(15),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(8.w)),
                             child: Image.asset(
                               itemData['image'],
                               fit: BoxFit.cover, // Adjust the fit as needed
@@ -386,11 +425,10 @@ class _HomeScreenState extends State<HomeScreen> {
                               height: 18.h,
                               width: 79.w, // Set the height
                               decoration: BoxDecoration(
-                                borderRadius: const BorderRadius.only(
-                                    topLeft: Radius.zero,
-                                    topRight: Radius.circular(8),
-                                    bottomLeft: Radius.circular(16),
-                                    bottomRight: Radius.zero),
+                                borderRadius: BorderRadius.only(
+                                  bottomLeft: Radius.circular(20.w),
+                                  topRight: Radius.circular(10.w),
+                                ),
                                 color: itemData[
                                     'color'], // Use the 'color' key from the data
                               ),
@@ -460,7 +498,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         children: [
                           // Use ClipRRect to create a circular border radius
                           ClipRRect(
-                            borderRadius: BorderRadius.circular(15),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(8.w)),
                             child: Image.asset(
                               itemData['image'],
                               fit: BoxFit.cover, // Adjust the fit as needed

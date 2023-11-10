@@ -19,7 +19,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.transparent,
         shadowColor: Colors.transparent,
         title: TextStyleHelper().mytext('Forgot Password', 18.sp,
             FontWeight.w500, MyCustomColors().kBlackColor),

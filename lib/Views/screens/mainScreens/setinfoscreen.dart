@@ -20,7 +20,7 @@ class _SetInformationScreenState extends State<SetInformationScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.transparent,
         shadowColor: Colors.transparent,
         title: Align(
           alignment: Alignment.topRight,
@@ -67,15 +67,36 @@ class _SetInformationScreenState extends State<SetInformationScreen> {
               SizedBox(
                 height: 20.h,
               ),
-              Padding(
-                padding: const EdgeInsets.only(left: 100),
-                child: Container(
-                  height: 100.h,
-                  width: 100.h,
-                  decoration: BoxDecoration(
-                    color: MyCustomColors().kGreyColor,
-                    image: const DecorationImage(
-                        image: AssetImage('assets/images/dummyuser.png')),
+              Center(
+                child: InkWell(
+                  onTap: () {},
+                  child: Stack(
+                    alignment: Alignment.bottomRight,
+                    children: [
+                      CircleAvatar(
+                        radius: 50.w,
+                        backgroundColor: MyCustomColors().kGreyColor,
+                        backgroundImage:
+                            const AssetImage('assets/images/dummyuser1.png'),
+                      ),
+                      // Add the additional container for further alignment here
+                      Container(
+                        width: 30.w,
+                        height: 30.h,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: MyCustomColors().kSecondaryColor,
+                        ),
+                        child: Center(
+                          child: SizedBox(
+                              height: 12.h,
+                              width: 12.w,
+                              child: Image.asset('assets/images/Pen1.png')),
+                        ),
+
+                        // Additional container alignment properties
+                      ),
+                    ],
                   ),
                 ),
               ),
@@ -93,7 +114,7 @@ class _SetInformationScreenState extends State<SetInformationScreen> {
                 'Enter your Name',
                 'Enter your Name',
                 MyCustomColors().kBlackColor1,
-                'Name',
+                'Enter your Name',
                 335,
                 50,
                 0,
@@ -114,7 +135,7 @@ class _SetInformationScreenState extends State<SetInformationScreen> {
                 'Enter your Email Address',
                 'Enter your Email Address',
                 MyCustomColors().kBlackColor1,
-                'Email',
+                'Enter your Email Address',
                 335,
                 50,
                 0,
@@ -135,7 +156,7 @@ class _SetInformationScreenState extends State<SetInformationScreen> {
                 'Enter your Phone Number',
                 'Enter your Phone Number',
                 MyCustomColors().kBlackColor1,
-                'Phone Number',
+                '+93568 4515515',
                 335,
                 50,
                 0,

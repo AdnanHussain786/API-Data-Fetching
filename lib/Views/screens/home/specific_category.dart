@@ -90,7 +90,7 @@ class _SpecificCategoryScreenState extends State<SpecificCategoryScreen> {
         child: Column(
           children: [
             Padding(
-              padding: EdgeInsets.all(15.w),
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
               child: Container(
                 width: 388.w, // Set the width
                 height: 60.h, // Set the height
@@ -98,25 +98,32 @@ class _SpecificCategoryScreenState extends State<SpecificCategoryScreen> {
                   boxShadow: [
                     BoxShadow(
                       color: Colors.grey.withOpacity(0.12), // Shadow color
-                      offset: Offset(0.w, 4.h), // X, Y offset
-                      blurRadius: 10.w, // Blur radius
-                      spreadRadius: 0.w, // Spread radius
+                      offset: const Offset(0, 4), // X, Y offset
+                      blurRadius: 10, // Blur radius
+                      spreadRadius: 0, // Spread radius
                     ),
                   ],
-                  borderRadius: BorderRadius.circular(12.w),
+                  borderRadius: BorderRadius.circular(10),
                 ),
                 child: Card(
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12.w),
+                    borderRadius: BorderRadius.circular(10),
                   ),
                   child: ListTile(
-                    leading: Image.asset('assets/images/Search.png'),
-                    title: TextField(
+                    leading: SizedBox(
+                      width: 30
+                          .w, // Reduce the width to bring the icon closer to text
+                      height: 30
+                          .h, // Reduce the height to bring the icon closer to text
+                      child: Image.asset('assets/images/Search.png'),
+                    ),
+                    title: TextFormField(
                       controller: searchController,
                       cursorColor: MyCustomColors().kSupporive,
                       decoration: InputDecoration(
                         hintText: "Ricerca",
                         hintStyle: TextStyle(
+                          color: MyCustomColors().kSupporive,
                           fontWeight: FontWeight.w500,
                           fontSize: 14.sp,
                           fontFamily: "Poppins",
@@ -125,18 +132,9 @@ class _SpecificCategoryScreenState extends State<SpecificCategoryScreen> {
                       ),
                     ),
                     trailing: SizedBox(
-                      height: 40.h,
-                      width: 70.w,
-                      child: Row(
-                        children: [
-                          Padding(
-                            padding: EdgeInsets.symmetric(
-                                vertical: 6.h, horizontal: 10.w),
-                            child: const VerticalDivider(),
-                          ),
-                          Image.asset('assets/images/filter.png'),
-                        ],
-                      ),
+                      width: 18.53.w,
+                      height: 18.h,
+                      child: Image.asset('assets/images/filter.png'),
                     ),
                   ),
                 ),
@@ -195,8 +193,14 @@ class _SpecificCategoryScreenState extends State<SpecificCategoryScreen> {
                   final containerColor =
                       containerColors[index % containerColors.length];
 
-                  return QuizzCategoryWidget(
-                    containerColor: containerColor,
+                  return Padding(
+                    padding: const EdgeInsets.only(left: 10).w,
+                    child: QuizzCategoryWidget(
+                      title: 'Microprocessor in computer Science',
+                      timeAgoText: '2 Days Ago',
+                      playsText: '3.2K Plays',
+                      containerColor: containerColor,
+                    ),
                   );
                 },
               ),
@@ -210,116 +214,130 @@ class _SpecificCategoryScreenState extends State<SpecificCategoryScreen> {
 
 class QuizzCategoryWidget extends StatelessWidget {
   const QuizzCategoryWidget({
-    super.key,
+    Key? key,
     required this.containerColor,
-  });
+    required this.title,
+    required this.timeAgoText,
+    this.playsText,
+  }) : super(key: key);
 
   final Color containerColor;
+  final String title;
+  final String timeAgoText;
+  final String? playsText;
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(left: 10.w),
-      child: Container(
-        padding: EdgeInsets.symmetric(vertical: 10.h),
-        height: 90.h,
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                  color: containerColor, // Use the provided container color
-                  borderRadius: BorderRadius.all(Radius.circular(10.w))),
-              child: Container(
-                margin: EdgeInsets.only(right: 2.w, bottom: 2.h),
-                child: Stack(
-                  alignment: Alignment.topRight,
-                  children: [
-                    Container(
-                      decoration: BoxDecoration(
-                          borderRadius:
-                              BorderRadius.all(Radius.circular(10.w))),
-                      height: 100.h,
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.all(Radius.circular(10.w)),
-                        child: Image.asset(
-                          'assets/images/Rectangle1.png',
-                          fit: BoxFit.fill,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      padding:
-                          EdgeInsets.symmetric(vertical: 5.h, horizontal: 10.w),
-                      decoration: BoxDecoration(
-                          color:
-                              containerColor, // Use the provided container color
-                          borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(20.w),
-                              topRight: Radius.circular(10.w))),
-                      child: Text(
-                        "18 Characters",
-                        style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                            fontWeight: FontWeight.w600,
-                            color: Colors.white,
-                            fontSize: 10.sp),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+    return Container(
+      padding: EdgeInsets.symmetric(vertical: 10.h),
+      height: 90.h,
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              color: containerColor,
+              borderRadius: BorderRadius.all(Radius.circular(10.w)),
             ),
-            SizedBox(
-              width: 10.w,
-            ),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            child: Container(
+              margin: EdgeInsets.only(right: 2.w, bottom: 2.h),
+              child: Stack(
+                alignment: Alignment.topRight,
                 children: [
-                  Flexible(
-                    child: Text(
-                      "Microprocessor in Computer Science",
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodyMedium!
-                          .copyWith(fontWeight: FontWeight.bold),
+                  Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(10.w)),
+                    ),
+                    height: 100.h,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.all(Radius.circular(10.w)),
+                      child: Image.asset(
+                        'assets/images/Rectangle1.png',
+                        fit: BoxFit.fill,
+                      ),
                     ),
                   ),
                   Container(
-                    color: Colors.transparent,
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.all(4.w),
-                          child: TextStyleHelper().mytext('2 Days ago', 10.sp,
-                              FontWeight.w700, MyCustomColors().kBlackColor3),
-                        ),
-                        SizedBox(
-                          width: 10.w,
-                        ),
-                        Center(
-                          child: Container(
-                            padding: EdgeInsets.all(4.w),
-                            decoration: BoxDecoration(
-                              color:
-                                  containerColor, // Use the provided container color
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(15.w)),
-                            ),
-                            child: TextStyleHelper().mytext('3.2K Plays', 10.sp,
-                                FontWeight.w700, MyCustomColors().kWhiteColor),
+                    padding:
+                        EdgeInsets.symmetric(vertical: 5.h, horizontal: 10.w),
+                    decoration: BoxDecoration(
+                      color: containerColor,
+                      borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(20.w),
+                        topRight: Radius.circular(10.w),
+                      ),
+                    ),
+                    child: Text(
+                      "18 Characters",
+                      style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                            fontWeight: FontWeight.w600,
+                            color: Colors.white,
+                            fontSize: 10.sp,
                           ),
-                        ),
-                      ],
                     ),
                   ),
                 ],
               ),
             ),
-          ],
-        ),
+          ),
+          SizedBox(
+            width: 10.w,
+          ),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Flexible(
+                  child: Text(
+                    title,
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodyMedium!
+                        .copyWith(fontWeight: FontWeight.bold),
+                  ),
+                ),
+                Container(
+                  color: Colors.transparent,
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.all(4.w),
+                        child: TextStyleHelper().mytext(
+                          timeAgoText,
+                          10.sp,
+                          FontWeight.w700,
+                          MyCustomColors().kBlackColor3,
+                        ),
+                      ),
+                      SizedBox(
+                        width: 10.w,
+                      ),
+                      if (playsText != null)
+                        Center(
+                          child: Container(
+                            padding: EdgeInsets.all(4.w),
+                            decoration: BoxDecoration(
+                              color: containerColor,
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(15.w)),
+                            ),
+                            child: TextStyleHelper().mytext(
+                              playsText!,
+                              10.sp,
+                              FontWeight.w700,
+                              MyCustomColors().kWhiteColor,
+                            ),
+                          ),
+                        ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
