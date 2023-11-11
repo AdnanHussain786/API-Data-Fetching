@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:quizapp/Views/screens/home/specific_category.dart';
-import 'package:quizapp/constants/bottom_navigation_bar.dart';
 import 'package:quizapp/constants/colors.dart';
 import 'package:quizapp/constants/mycustombutton.dart';
 import 'package:quizapp/constants/quizscreenscontainersdata.dart';
@@ -23,7 +22,6 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: CustomBottomNavigationBar(),
       appBar: AppBar(
         leadingWidth: 70.w,
         toolbarHeight: 59.h,
@@ -157,13 +155,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   TextStyleHelper().mytext('Categories', 20, FontWeight.w700,
                       MyCustomColors().kBlackColor),
-                  SizedBox(
-                    width: 190.w,
-                  ),
-                  Expanded(
-                    child: TextStyleHelper().mytext('View All', 12,
-                        FontWeight.w500, MyCustomColors().kBlackColor3),
-                  ),
+                  Spacer(), // Use Spacer to distribute remaining space
+                  TextStyleHelper().mytext('View All', 12, FontWeight.w500,
+                      MyCustomColors().kBlackColor3),
                 ],
               ),
             ),
@@ -241,13 +235,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   TextStyleHelper().mytext('Top Quiz    ', 20, FontWeight.w700,
                       MyCustomColors().kBlackColor),
-                  SizedBox(
-                    width: 190.w,
-                  ),
-                  Expanded(
-                    child: TextStyleHelper().mytext('View All', 12,
-                        FontWeight.w500, MyCustomColors().kBlackColor3),
-                  ),
+                  Spacer(), // Use Spacer to distribute remaining space
+                  TextStyleHelper().mytext('View All', 12, FontWeight.w500,
+                      MyCustomColors().kBlackColor3),
                 ],
               ),
             ),

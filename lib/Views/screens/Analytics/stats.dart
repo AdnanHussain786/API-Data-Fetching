@@ -24,7 +24,6 @@ class _StatsScreenState extends State<StatsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        bottomNavigationBar: CustomBottomNavigationBar(),
         appBar: AppBar(
           centerTitle: true,
           title: TextStyleHelper().mytext(
@@ -113,6 +112,7 @@ class _StatsScreenState extends State<StatsScreen> {
                     )
                   ],
                 ),
+
                 SizedBox(
                   height: 10.h,
                 ),

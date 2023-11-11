@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:quizapp/Views/screens/Analytics/stats.dart';
+import 'package:quizapp/Views/screens/InAppStore/inappstore.dart';
 import 'package:quizapp/Views/screens/auth/registerscreen.dart';
 import 'package:quizapp/Views/screens/forgotPassword/forgotpasswordscreen.dart';
 import 'package:quizapp/constants/bottom_navigation_bar.dart';
@@ -138,7 +139,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const StatsScreen(),
+                              builder: (context) => const InAppStoreScreen(),
                             ));
                       }),
                   SizedBox(

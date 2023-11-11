@@ -45,7 +45,9 @@ class _AttemptingQuizScreenState extends State<AttemptingQuizScreen> {
         return true; // Allow default back button behavior if on the first question
       },
       child: Scaffold(
+        backgroundColor: MyCustomColors().kPrimaryColor3,
         appBar: AppBar(
+          elevation: 0,
           backgroundColor: MyCustomColors().kPrimaryColor3,
           automaticallyImplyLeading: false,
           title: Row(
@@ -83,27 +85,39 @@ class _AttemptingQuizScreenState extends State<AttemptingQuizScreen> {
             ],
           ),
         ),
-        body: PageView.builder(
-          physics: const NeverScrollableScrollPhysics(),
-          controller: _pageController,
-          itemCount: questions.length,
-          itemBuilder: (context, index) {
-            return QuestionScreen(
-              questions: questions,
-              questionData: questions[index],
-              onNext: () {
-                if (index < questions.length - 1) {
-                  _pageController.nextPage(
-                    duration: const Duration(milliseconds: 100),
-                    curve: Curves.ease,
-                  );
-                } else {
-                  showBottomSheet(
-                      context); // Show bottom sheet on the last question
-                }
-              },
-            );
-          },
+        body: Container(
+          decoration: BoxDecoration(
+              // border: Border.all(
+              //     color: MyCustomColors().kWhiteColor,
+              //     strokeAlign: 0,
+              //     width: 0.w),
+              color: MyCustomColors().kWhiteColor,
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(24),
+                topRight: Radius.circular(24),
+              )),
+          child: PageView.builder(
+            physics: const NeverScrollableScrollPhysics(),
+            controller: _pageController,
+            itemCount: questions.length,
+            itemBuilder: (context, index) {
+              return QuestionScreen(
+                questions: questions,
+                questionData: questions[index],
+                onNext: () {
+                  if (index < questions.length - 1) {
+                    _pageController.nextPage(
+                      duration: const Duration(milliseconds: 100),
+                      curve: Curves.ease,
+                    );
+                  } else {
+                    showBottomSheet(
+                        context); // Show bottom sheet on the last question
+                  }
+                },
+              );
+            },
+          ),
         ),
       ),
     );

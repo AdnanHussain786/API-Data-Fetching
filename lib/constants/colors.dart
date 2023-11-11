@@ -46,6 +46,8 @@ class MyCustomColors {
 
   Color kGreyColor = const Color(0xffF5F4F8);
 
+  Color kGreyColor1 = const Color(0xffFAFAFA);
+
   // Supoortive Color
 
   Color kSupporive = const Color(0xffAFAFAF);

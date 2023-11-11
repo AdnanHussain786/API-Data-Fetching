@@ -40,7 +40,9 @@ class _CheckingCorrectAnswersState extends State<CheckingCorrectAnswers> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: MyCustomColors().kPrimaryColor3,
       appBar: AppBar(
+        elevation: 0,
         backgroundColor: MyCustomColors().kPrimaryColor3,
         automaticallyImplyLeading: false,
         title: Row(
@@ -78,277 +80,289 @@ class _CheckingCorrectAnswersState extends State<CheckingCorrectAnswers> {
           ],
         ),
       ),
-      body: PageView.builder(
-        controller: _pageController,
-        itemCount: questions.length,
-        physics: const NeverScrollableScrollPhysics(),
-        onPageChanged: (index) {
-          setState(() {
-            currentPage = index;
-          });
-        },
-        itemBuilder: (context, index) {
-          final question = questions[index];
+      body: Container(
+        decoration: BoxDecoration(
+            // border: Border.all(
+            //     color: MyCustomColors().kWhiteColor,
+            //     strokeAlign: 0,
+            //     width: 0.w),
+            color: MyCustomColors().kWhiteColor,
+            borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(24),
+              topRight: Radius.circular(24),
+            )),
+        child: PageView.builder(
+          controller: _pageController,
+          itemCount: questions.length,
+          physics: const NeverScrollableScrollPhysics(),
+          onPageChanged: (index) {
+            setState(() {
+              currentPage = index;
+            });
+          },
+          itemBuilder: (context, index) {
+            final question = questions[index];
 
-          return Padding(
-            padding: const EdgeInsets.only(left: 10, top: 20, right: 10).r,
-            child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  TextStyleHelper().mytext(
-                    "Question #${index + 1}",
-                    20,
-                    FontWeight.w500,
-                    MyCustomColors().kBlackColor2,
-                  ),
-                  const SizedBox(height: 10),
-                  TextStyleHelper().mytext(
-                    question.question,
-                    20,
-                    FontWeight.w500,
-                    MyCustomColors().kBlackColor,
-                  ),
-                  const SizedBox(height: 10),
-                  // Radio buttons here
-
-                  Row(
-                    children: [
-                      Radio(
-                        activeColor: MyCustomColors().kPrimaryColor,
-                        value: 1,
-                        groupValue: selectedRadio,
-                        onChanged: (value) {
-                          setState(() {
-                            selectedRadio = value;
-                            _showMasteredBottomSheet(
-                                context); // Show bottom sheet
-                          });
-                        },
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            selectedRadio = 1;
-                            _showMasteredBottomSheet(
-                                context); // Show bottom sheet
-                          });
-                        },
-                        child: TextStyleHelper().mytext(
-                          'Mark as Mastered',
-                          14,
-                          FontWeight.w400,
-                          selectedRadio == 1
-                              ? MyCustomColors().kPrimaryColor
-                              : MyCustomColors().kBlackColor1,
-                        ),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Radio(
-                        activeColor: MyCustomColors().kPrimaryColor,
-                        value: 2,
-                        groupValue: selectedRadio,
-                        onChanged: (value) {
-                          setState(() {
-                            selectedRadio = value;
-                          });
-                        },
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            selectedRadio = 2;
-                          });
-                        },
-                        child: TextStyleHelper().mytext(
-                          'Retake Later',
-                          14,
-                          FontWeight.w400,
-                          selectedRadio == 2
-                              ? MyCustomColors().kPrimaryColor
-                              : MyCustomColors().kBlackColor1,
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 10),
-                  TextStyleHelper().mytext(
-                    'Selected Answer',
-                    16,
-                    FontWeight.w500,
-                    MyCustomColors().kBlackColor2,
-                  ),
-                  Container(
-                    width: 388.w,
-                    height: 50.h,
-                    margin: EdgeInsets.only(top: 10.h),
-                    child: TextFormField(
-                      enableInteractiveSelection: false,
-                      initialValue: question.selectedOption,
-                      readOnly: true,
-                      style: question.isAnswerCorrect
-                          ? TextStyle(
-                              color: MyCustomColors().kTrueColor,
-                              fontSize: 14.sp,
-                              fontWeight: FontWeight.w700)
-                          : TextStyle(
-                              color: MyCustomColors().kFalseColor,
-                              fontSize: 14.sp,
-                              fontWeight: FontWeight.w700),
-                      decoration: InputDecoration(
-                        suffixIcon: question.isAnswerCorrect
-                            ? const Icon(Icons.check, color: Colors.green)
-                            : const Icon(Icons.close, color: Colors.red),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10.w),
-                          borderSide:
-                              BorderSide(color: MyCustomColors().kFalseColor),
-                        ),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10.w),
-                        ),
-                        contentPadding: EdgeInsets.all(10.w),
-                      ),
+            return Padding(
+              padding: const EdgeInsets.only(left: 10, top: 20, right: 10).r,
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    TextStyleHelper().mytext(
+                      "Question #${index + 1}",
+                      20,
+                      FontWeight.w500,
+                      MyCustomColors().kBlackColor2,
                     ),
-                  ),
-                  SizedBox(height: 30.h),
-                  TextStyleHelper().mytext(
-                    'Correct Answer',
-                    16,
-                    FontWeight.w500,
-                    MyCustomColors().kBlackColor2,
-                  ),
-                  Container(
-                    width: 388.w,
-                    height: 50.h,
-                    margin: EdgeInsets.only(top: 10.h),
-                    child: TextFormField(
-                      enableInteractiveSelection: false,
-                      initialValue: question.correctAnswer,
-                      readOnly: true,
-                      style: TextStyle(
-                          color: MyCustomColors().kWhiteColor1,
-                          fontSize: 14.sp,
-                          fontWeight: FontWeight.w700),
-                      decoration: InputDecoration(
-                        filled: true,
-                        fillColor:
-                            MyCustomColors().kTrueFillColor.withOpacity(0.8),
-                        suffixIcon: Icon(Icons.check,
-                            color: MyCustomColors().kWhiteColor),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10).r,
-                          borderSide:
-                              BorderSide(color: MyCustomColors().kFalseColor),
-                        ),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10.r),
-                        ),
-                        contentPadding: EdgeInsets.all(10.r),
-                      ),
+                    const SizedBox(height: 10),
+                    TextStyleHelper().mytext(
+                      question.question,
+                      20,
+                      FontWeight.w500,
+                      MyCustomColors().kBlackColor,
                     ),
-                  ),
+                    const SizedBox(height: 10),
+                    // Radio buttons here
 
-                  SizedBox(height: 20.h),
-                  TextStyleHelper().mytext(
-                    'Explanation',
-                    16,
-                    FontWeight.w500,
-                    MyCustomColors().kBlackColor2,
-                  ),
-                  _buildExplanationText(question, isSubscribed),
-
-                  SizedBox(height: 20.h),
-
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      if (currentPage == 0)
-                        Container(
-                          width: 48.w,
-                          height: 48.h,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: currentPage == 1
-                                ? MyCustomColors().kPrimaryColor1
-                                : MyCustomColors().kWhiteColor4,
+                    Row(
+                      children: [
+                        Radio(
+                          activeColor: MyCustomColors().kPrimaryColor,
+                          value: 1,
+                          groupValue: selectedRadio,
+                          onChanged: (value) {
+                            setState(() {
+                              selectedRadio = value;
+                              _showMasteredBottomSheet(
+                                  context); // Show bottom sheet
+                            });
+                          },
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              selectedRadio = 1;
+                              _showMasteredBottomSheet(
+                                  context); // Show bottom sheet
+                            });
+                          },
+                          child: TextStyleHelper().mytext(
+                            'Mark as Mastered',
+                            14,
+                            FontWeight.w400,
+                            selectedRadio == 1
+                                ? MyCustomColors().kPrimaryColor
+                                : MyCustomColors().kBlackColor1,
                           ),
-                          child: IconButton(
-                            onPressed: () {
-                              if (currentPage > 0) {
-                                _pageController.previousPage(
-                                  duration: const Duration(milliseconds: 500),
-                                  curve: Curves.easeInOut,
-                                );
-                              }
-                            },
-                            icon: Icon(
-                              Icons.arrow_back,
-                              color: MyCustomColors().kWhiteColor,
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Radio(
+                          activeColor: MyCustomColors().kPrimaryColor,
+                          value: 2,
+                          groupValue: selectedRadio,
+                          onChanged: (value) {
+                            setState(() {
+                              selectedRadio = value;
+                            });
+                          },
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              selectedRadio = 2;
+                            });
+                          },
+                          child: TextStyleHelper().mytext(
+                            'Retake Later',
+                            14,
+                            FontWeight.w400,
+                            selectedRadio == 2
+                                ? MyCustomColors().kPrimaryColor
+                                : MyCustomColors().kBlackColor1,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 10),
+                    TextStyleHelper().mytext(
+                      'Selected Answer',
+                      16,
+                      FontWeight.w500,
+                      MyCustomColors().kBlackColor2,
+                    ),
+                    Container(
+                      width: 388.w,
+                      height: 50.h,
+                      margin: EdgeInsets.only(top: 10.h),
+                      child: TextFormField(
+                        enableInteractiveSelection: false,
+                        initialValue: question.selectedOption,
+                        readOnly: true,
+                        style: question.isAnswerCorrect
+                            ? TextStyle(
+                                color: MyCustomColors().kTrueColor,
+                                fontSize: 14.sp,
+                                fontWeight: FontWeight.w700)
+                            : TextStyle(
+                                color: MyCustomColors().kFalseColor,
+                                fontSize: 14.sp,
+                                fontWeight: FontWeight.w700),
+                        decoration: InputDecoration(
+                          suffixIcon: question.isAnswerCorrect
+                              ? const Icon(Icons.check, color: Colors.green)
+                              : const Icon(Icons.close, color: Colors.red),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10.w),
+                            borderSide:
+                                BorderSide(color: MyCustomColors().kFalseColor),
+                          ),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10.w),
+                          ),
+                          contentPadding: EdgeInsets.all(10.w),
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 30.h),
+                    TextStyleHelper().mytext(
+                      'Correct Answer',
+                      16,
+                      FontWeight.w500,
+                      MyCustomColors().kBlackColor2,
+                    ),
+                    Container(
+                      width: 388.w,
+                      height: 50.h,
+                      margin: EdgeInsets.only(top: 10.h),
+                      child: TextFormField(
+                        enableInteractiveSelection: false,
+                        initialValue: question.correctAnswer,
+                        readOnly: true,
+                        style: TextStyle(
+                            color: MyCustomColors().kWhiteColor1,
+                            fontSize: 14.sp,
+                            fontWeight: FontWeight.w700),
+                        decoration: InputDecoration(
+                          filled: true,
+                          fillColor:
+                              MyCustomColors().kTrueFillColor.withOpacity(0.8),
+                          suffixIcon: Icon(Icons.check,
+                              color: MyCustomColors().kWhiteColor),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10).r,
+                            borderSide:
+                                BorderSide(color: MyCustomColors().kFalseColor),
+                          ),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10.r),
+                          ),
+                          contentPadding: EdgeInsets.all(10.r),
+                        ),
+                      ),
+                    ),
+
+                    SizedBox(height: 20.h),
+                    TextStyleHelper().mytext(
+                      'Explanation',
+                      16,
+                      FontWeight.w500,
+                      MyCustomColors().kBlackColor2,
+                    ),
+                    _buildExplanationText(question, isSubscribed),
+
+                    SizedBox(height: 20.h),
+
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        if (currentPage == 0)
+                          Container(
+                            width: 48.w,
+                            height: 48.h,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: currentPage == 1
+                                  ? MyCustomColors().kPrimaryColor1
+                                  : MyCustomColors().kWhiteColor4,
+                            ),
+                            child: IconButton(
+                              onPressed: () {
+                                if (currentPage > 0) {
+                                  _pageController.previousPage(
+                                    duration: const Duration(milliseconds: 500),
+                                    curve: Curves.easeInOut,
+                                  );
+                                }
+                              },
+                              icon: Icon(
+                                Icons.arrow_back,
+                                color: MyCustomColors().kWhiteColor,
+                              ),
                             ),
                           ),
-                        ),
-                      if (currentPage > 0)
+                        if (currentPage > 0)
+                          Container(
+                            width: 48.w,
+                            height: 48.h,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: currentPage == 1
+                                  ? MyCustomColors().kPrimaryColor1
+                                  : MyCustomColors().kPrimaryColor1,
+                            ),
+                            child: IconButton(
+                              onPressed: () {
+                                if (currentPage > 0) {
+                                  _pageController.previousPage(
+                                    duration: const Duration(milliseconds: 500),
+                                    curve: Curves.easeInOut,
+                                  );
+                                }
+                              },
+                              icon: Icon(
+                                Icons.arrow_back,
+                                color: MyCustomColors().kWhiteColor,
+                              ),
+                            ),
+                          ),
+                        SizedBox(width: 50.w),
                         Container(
                           width: 48.w,
                           height: 48.h,
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
-                            color: currentPage == 1
-                                ? MyCustomColors().kPrimaryColor1
+                            color: currentPage == questions.length - 1
+                                ? MyCustomColors().kWhiteColor4
                                 : MyCustomColors().kPrimaryColor1,
                           ),
                           child: IconButton(
                             onPressed: () {
-                              if (currentPage > 0) {
-                                _pageController.previousPage(
+                              if (currentPage < questions.length - 1) {
+                                _pageController.nextPage(
                                   duration: const Duration(milliseconds: 500),
                                   curve: Curves.easeInOut,
                                 );
                               }
                             },
                             icon: Icon(
-                              Icons.arrow_back,
+                              Icons.arrow_forward,
                               color: MyCustomColors().kWhiteColor,
                             ),
                           ),
                         ),
-                      SizedBox(width: 50.w),
-                      Container(
-                        width: 48.w,
-                        height: 48.h,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: currentPage == questions.length - 1
-                              ? MyCustomColors().kWhiteColor4
-                              : MyCustomColors().kPrimaryColor1,
-                        ),
-                        child: IconButton(
-                          onPressed: () {
-                            if (currentPage < questions.length - 1) {
-                              _pageController.nextPage(
-                                duration: const Duration(milliseconds: 500),
-                                curve: Curves.easeInOut,
-                              );
-                            }
-                          },
-                          icon: Icon(
-                            Icons.arrow_forward,
-                            color: MyCustomColors().kWhiteColor,
-                          ),
-                        ),
-                      ),
-                    ],
-                  )
-                ],
+                      ],
+                    )
+                  ],
+                ),
               ),
-            ),
-          );
-        },
+            );
+          },
+        ),
       ),
     );
   }

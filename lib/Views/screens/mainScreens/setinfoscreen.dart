@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:quizapp/Views/screens/home/homescreen.dart';
+import 'package:quizapp/constants/bottom_navigation_bar.dart';
 import 'package:quizapp/constants/colors.dart';
 import 'package:quizapp/constants/mycustombutton.dart';
 import 'package:quizapp/constants/textstylehelper1.dart';
@@ -180,7 +181,8 @@ class _SetInformationScreenState extends State<SetInformationScreen> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const HomeScreen(),
+                            builder: (context) =>
+                                const CustomBottomNavigationBar(),
                           ));
                     }),
               ),
