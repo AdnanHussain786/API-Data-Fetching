@@ -112,11 +112,11 @@ class RoundButton1 extends StatelessWidget {
         width: width,
         decoration: BoxDecoration(
           boxShadow: [
-            BoxShadow(
-              color: Colors.pink.withOpacity(0.2),
-              blurRadius: 40,
-              offset: const Offset(0, 10),
-            ),
+            // BoxShadow(
+            //   color: Colors.pink.withOpacity(0.2),
+            //   blurRadius: 40,
+            //   offset: const Offset(0, 10),
+            // ),
           ],
           color: backgroundColor,
           borderRadius: BorderRadius.circular(radius),

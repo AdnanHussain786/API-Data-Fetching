@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:quizapp/Views/screens/Analytics/stats.dart';
-import 'package:quizapp/Views/screens/auth/loginscreen.dart';
-import 'package:quizapp/Views/screens/auth/registerscreen.dart';
-import 'package:quizapp/Views/screens/home/homescreen.dart';
+import 'package:quizapp/Views/User/Analytics/stats.dart';
+import 'package:quizapp/Views/auth/loginscreen.dart';
+import 'package:quizapp/Views/auth/registerscreen.dart';
+import 'package:quizapp/Views/User/home/homescreen.dart';
 
 /// A service class that handles navigation between different screens.
 class NavigationService {

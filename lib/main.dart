@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:quizapp/Views/screens/mainScreens/splashscreen.dart';
+import 'package:get/get.dart';
+import 'package:quizapp/Views/User/mainScreens/splashscreen.dart';
+import 'package:quizapp/Views/Admin/bottombar/admin_navigation_bar.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,9 +20,9 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
     );
 
-    return const MaterialApp(
+    return const GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SplashScreen(),
+      home: AdminBottomBar(),
     );
   }
 }

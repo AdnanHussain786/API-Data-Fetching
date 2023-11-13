@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:quizapp/Views/Admin/Home/admin_home.dart';
+import 'package:quizapp/Views/Admin/Quiz/admin_quiz_screen.dart';
+import 'package:quizapp/Views/Admin/profile/admin_profile_screen.dart';
 import 'package:quizapp/Views/User/Analytics/stats.dart';
 import 'package:quizapp/Views/InAppStore/inappstore.dart';
 import 'package:quizapp/Views/auth/loginscreen.dart';
@@ -9,22 +12,24 @@ import 'package:quizapp/Views/User/home/homescreen.dart';
 import 'package:quizapp/Views/User/profile/profile_screen.dart';
 import 'package:quizapp/constants/colors.dart';
 
-class CustomBottomNavigationBar extends StatefulWidget {
-  const CustomBottomNavigationBar({Key? key}) : super(key: key);
+class AdminBottomBar extends StatefulWidget {
+  const AdminBottomBar({Key? key}) : super(key: key);
 
   @override
-  State<CustomBottomNavigationBar> createState() =>
-      _CustomBottomNavigationBarState();
+  State<AdminBottomBar> createState() => _AdminBottomBarState();
 }
 
-class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
+class _AdminBottomBarState extends State<AdminBottomBar> {
   int _selectedIndex = 0;
 
   List<Widget> pages = [
-    HomeScreen(),
+    AdminHome(),
+    AdminQuizScreen(),
     StatsScreen(),
-    InAppStoreScreen(),
-    ProfileScreen(),
+    InAppStoreScreen(
+      isAdmin: true,
+    ),
+    AdminProfileScreen(),
   ];
 
   void onTap(index) {
@@ -55,7 +60,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
       extendBody: true,
       body: pages[_selectedIndex],
       bottomNavigationBar: Padding(
-        padding: EdgeInsets.only(left: 40.w, right: 50.w, bottom: 20.h),
+        padding: EdgeInsets.only(left: 20.w, right: 20.w, bottom: 20.h),
         child: Container(
           height: 55,
           width: 322,
@@ -81,17 +86,22 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
                     ),
                     BottomNavigationBarItem(
                       icon: buildIcon(
-                          'assets/images/quiz.png', _selectedIndex == 1),
-                      label: 'Stats',
+                          'assets/images/admin_quiz.png', _selectedIndex == 1),
+                      label: 'Quiz',
                     ),
                     BottomNavigationBarItem(
                       icon: buildIcon(
-                          'assets/images/bag.png', _selectedIndex == 2),
+                          'assets/images/csv.png', _selectedIndex == 2),
+                      label: 'CSV',
+                    ),
+                    BottomNavigationBarItem(
+                      icon: buildIcon(
+                          'assets/images/bag.png', _selectedIndex == 3),
                       label: 'App Store',
                     ),
                     BottomNavigationBarItem(
                       icon: buildIcon(
-                          'assets/images/profile.png', _selectedIndex == 3),
+                          'assets/images/profile.png', _selectedIndex == 4),
                       label: 'Profile',
                     ),
                   ],
