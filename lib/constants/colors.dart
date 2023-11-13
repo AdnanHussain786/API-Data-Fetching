@@ -42,6 +42,8 @@ class MyCustomColors {
 
   Color kBlackColor8 = const Color(0xff4B525B);
 
+  Color kBlackColor9 = const Color(0xff616161);
+
   //   Grey
 
   Color kGreyColor = const Color(0xffF5F4F8);

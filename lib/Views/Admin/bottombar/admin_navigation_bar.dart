@@ -3,6 +3,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:quizapp/Views/Admin/Home/admin_home.dart';
 import 'package:quizapp/Views/Admin/Quiz/admin_quiz_screen.dart';
+import 'package:quizapp/Views/Admin/UploadCsvFiles/csvfiles.dart';
 import 'package:quizapp/Views/Admin/profile/admin_profile_screen.dart';
 import 'package:quizapp/Views/User/Analytics/stats.dart';
 import 'package:quizapp/Views/InAppStore/inappstore.dart';
@@ -25,7 +26,7 @@ class _AdminBottomBarState extends State<AdminBottomBar> {
   List<Widget> pages = [
     AdminHome(),
     AdminQuizScreen(),
-    StatsScreen(),
+    CSVFilesScreen(),
     InAppStoreScreen(
       isAdmin: true,
     ),

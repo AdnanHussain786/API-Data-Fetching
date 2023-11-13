@@ -3,6 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:quizapp/Views/Admin/Home/all_users.dart';
+import 'package:quizapp/Views/Admin/Home/subscribers.dart';
 import 'package:quizapp/constants/colors.dart';
 import 'package:quizapp/constants/textstylehelper1.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
@@ -122,77 +124,86 @@ class _AdminHomeState extends State<AdminHome> {
                 SizedBox(
                   height: 10.h,
                 ),
-                GridView.builder(
-                    padding: EdgeInsets.only(right: 14.w),
-                    physics: const NeverScrollableScrollPhysics(),
-                    shrinkWrap: true,
-                    itemCount: colors.length,
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      crossAxisSpacing: 5,
-                      mainAxisSpacing: 10,
-                      childAspectRatio: 1.8,
-                    ),
-                    itemBuilder: (BuildContext context, int index) {
-                      return Container(
-                        padding: EdgeInsets.symmetric(
-                            horizontal: 0.w, vertical: 10.h),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(15.r),
-                            color: Colors.white,
-                            border: Border.all(
-                              color: Colors.black.withOpacity(0.05),
-                            )),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            SizedBox(
-                              width: 10.w,
-                            ),
-                            Container(
-                              padding: EdgeInsets.all(8.r),
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: colors[index],
+                InkWell(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => SubscribersScreen(),
+                        ));
+                  },
+                  child: GridView.builder(
+                      padding: EdgeInsets.only(right: 14.w),
+                      physics: const NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      itemCount: colors.length,
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        crossAxisSpacing: 5,
+                        mainAxisSpacing: 10,
+                        childAspectRatio: 1.8,
+                      ),
+                      itemBuilder: (BuildContext context, int index) {
+                        return Container(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 0.w, vertical: 10.h),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(15.r),
+                              color: Colors.white,
+                              border: Border.all(
+                                color: Colors.black.withOpacity(0.05),
+                              )),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              SizedBox(
+                                width: 10.w,
                               ),
-                              child: Image.asset(
-                                icons[index],
-                                height: 20.h,
-                                width: 20.w,
-                                // colorFilter: ColorFilter.mode(
-                                //     Colors.black, BlendMode.srcIn),
+                              Container(
+                                padding: EdgeInsets.all(8.r),
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: colors[index],
+                                ),
+                                child: Image.asset(
+                                  icons[index],
+                                  height: 20.h,
+                                  width: 20.w,
+                                  // colorFilter: ColorFilter.mode(
+                                  //     Colors.black, BlendMode.srcIn),
+                                ),
                               ),
-                            ),
-                            SizedBox(
-                              width: 10.w,
-                            ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  titles[index],
-                                  style: GoogleFonts.dmSans(
-                                    fontSize: 14.sp,
-                                    fontWeight: FontWeight.w500,
-                                    color: Colors.black,
+                              SizedBox(
+                                width: 10.w,
+                              ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    titles[index],
+                                    style: GoogleFonts.dmSans(
+                                      fontSize: 14.sp,
+                                      fontWeight: FontWeight.w500,
+                                      color: Colors.black,
+                                    ),
                                   ),
-                                ),
-                                Text(
-                                  '214',
-                                  style: GoogleFonts.montserrat(
-                                    fontSize: 30.sp,
-                                    fontWeight: FontWeight.w600,
-                                    color: Colors.black,
+                                  Text(
+                                    '214',
+                                    style: GoogleFonts.montserrat(
+                                      fontSize: 30.sp,
+                                      fontWeight: FontWeight.w600,
+                                      color: Colors.black,
+                                    ),
                                   ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      );
-                    }),
+                                ],
+                              ),
+                            ],
+                          ),
+                        );
+                      }),
+                ),
                 SizedBox(
                   height: 20.h,
                 ),
