@@ -16,9 +16,8 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    // Simulate a three-second delay before navigating to the main screen.
+
     Timer(const Duration(seconds: 3), () {
-      // Replace 'MainScreen()' with your main screen widget.
       Navigator.of(context).pushReplacement(MaterialPageRoute(
         builder: (BuildContext context) => const LoginScreen(),
       ));
@@ -28,13 +27,17 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: MyCustomColors().kPrimaryColor2, // Background color
-      body: Center(
-        child: Image.asset(
-          'assets/images/img1.png', // Replace with your image path
-          width: 178.w, // Adjust the width as needed
-          height: 178.h, // Adjust the height as needed
-        ),
+      backgroundColor: MyCustomColors().kPrimaryColor2,
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Image.asset(
+            'assets/images/img1.png',
+            width: 178.w,
+            height: 178.h,
+            colorBlendMode: BlendMode.darken,
+          ),
+        ],
       ),
     );
   }

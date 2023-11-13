@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:quizapp/Views/User/Analytics/stats.dart';
-import 'package:quizapp/Views/InAppStore/inappstore.dart';
+import 'package:get/get.dart';
 import 'package:quizapp/Views/auth/registerscreen.dart';
 import 'package:quizapp/Views/User/forgotPassword/forgotpasswordscreen.dart';
-import 'package:quizapp/constants/bottom_navigation_bar.dart';
 import 'package:quizapp/constants/colors.dart';
 import 'package:quizapp/constants/mycustombutton.dart';
 import 'package:quizapp/constants/textstylehelper1.dart';
+import 'package:quizapp/tempory_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -28,8 +27,8 @@ class _LoginScreenState extends State<LoginScreen> {
         child: Column(
           children: [
             Container(
-              width: 386.w,
-              height: 200.h,
+              width: Get.width,
+              height: 180.h,
               decoration: const BoxDecoration(
                 image: DecorationImage(
                   fit: BoxFit.fill,
@@ -139,8 +138,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) =>
-                                  const CustomBottomNavigationBar(),
+                              builder: (context) => const TemporaryScreen(),
+                              // CustomBottomNavigationBar(),
                             ));
                       }),
                   SizedBox(

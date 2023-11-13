@@ -120,18 +120,7 @@ class _CSVFilesScreenState extends State<CSVFilesScreen> {
                             width: 388.w,
                             height: 50.h,
                             decoration: BoxDecoration(
-                              color: MyCustomColors()
-                                  .kPrimaryColor
-                                  .withOpacity(0.1),
-                              boxShadow: [
-                                BoxShadow(
-                                  color:
-                                      const Color(0xff000000).withOpacity(0.12),
-                                  offset: Offset(0, 3.h),
-                                  blurRadius: 10.r,
-                                  spreadRadius: 0,
-                                ),
-                              ],
+                              color: Color(0xff064DAE).withOpacity(0.1),
                               borderRadius: BorderRadius.circular(12.r),
                             ),
                             child: Padding(

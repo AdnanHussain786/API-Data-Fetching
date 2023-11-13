@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:quizapp/Views/User/mainScreens/setinfoscreen.dart';
 import 'package:quizapp/Views/auth/loginscreen.dart';
 import 'package:quizapp/constants/colors.dart';
 import 'package:quizapp/constants/mycustombutton.dart';
@@ -26,8 +28,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              width: 386.w,
-              height: 200.h,
+              width: Get.width,
+              height: 180.h,
               decoration: const BoxDecoration(
                 image: DecorationImage(
                   fit: BoxFit.fill,
@@ -141,7 +143,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       height: 57.h,
                       width: 335.w,
                       radius: 10.r,
-                      onClick: () {}),
+                      onClick: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  const SetInformationScreen(),
+                            ));
+                      }),
                   SizedBox(
                     height: 40.h,
                   ),

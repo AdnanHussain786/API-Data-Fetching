@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:quizapp/Views/User/mainScreens/setinfoscreen.dart';
+import 'package:quizapp/Views/auth/loginscreen.dart';
 import 'package:quizapp/constants/colors.dart';
 import 'package:quizapp/constants/mycustombutton.dart';
 import 'package:quizapp/constants/textstylehelper1.dart';
@@ -136,7 +137,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const SetInformationScreen(),
+                          builder: (context) => const LoginScreen(),
                         ));
                   }),
             ],

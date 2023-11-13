@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:quizapp/Views/Admin/bottombar/admin_navigation_bar.dart';
+import 'package:quizapp/Views/User/mainScreens/splashscreen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
 
     return const GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: AdminBottomBar(),
+      home: SplashScreen(),
     );
   }
 }

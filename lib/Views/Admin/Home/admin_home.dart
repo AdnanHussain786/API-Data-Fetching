@@ -124,28 +124,32 @@ class _AdminHomeState extends State<AdminHome> {
                 SizedBox(
                   height: 10.h,
                 ),
-                InkWell(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => SubscribersScreen(),
-                        ));
-                  },
-                  child: GridView.builder(
-                      padding: EdgeInsets.only(right: 14.w),
-                      physics: const NeverScrollableScrollPhysics(),
-                      shrinkWrap: true,
-                      itemCount: colors.length,
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        crossAxisSpacing: 5,
-                        mainAxisSpacing: 10,
-                        childAspectRatio: 1.8,
-                      ),
-                      itemBuilder: (BuildContext context, int index) {
-                        return Container(
+                GridView.builder(
+                    padding: EdgeInsets.only(right: 14.w),
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    itemCount: colors.length,
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 5,
+                      mainAxisSpacing: 10,
+                      childAspectRatio: 1.8,
+                    ),
+                    itemBuilder: (BuildContext context, int index) {
+                      return GestureDetector(
+                        onTap: () {
+                          if (index == 0) {
+                            Get.to(
+                              () => const SubscribersScreen(),
+                            );
+                          } else if (index == 3) {
+                            Get.to(
+                              () => const AllUsersScreen(),
+                            );
+                          }
+                        },
+                        child: Container(
                           padding: EdgeInsets.symmetric(
                               horizontal: 0.w, vertical: 10.h),
                           decoration: BoxDecoration(
@@ -201,9 +205,9 @@ class _AdminHomeState extends State<AdminHome> {
                               ),
                             ],
                           ),
-                        );
-                      }),
-                ),
+                        ),
+                      );
+                    }),
                 SizedBox(
                   height: 20.h,
                 ),
