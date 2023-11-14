@@ -30,12 +30,15 @@ class _SplashScreenState extends State<SplashScreen> {
       backgroundColor: MyCustomColors().kPrimaryColor2,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Image.asset(
-            'assets/images/img1.png',
-            width: 178.w,
-            height: 178.h,
-            colorBlendMode: BlendMode.darken,
+          Center(
+            child: Image.asset(
+              'assets/images/img1.png',
+              width: 178.w,
+              height: 178.h,
+              colorBlendMode: BlendMode.darken,
+            ),
           ),
         ],
       ),
