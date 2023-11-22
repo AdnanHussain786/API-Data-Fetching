@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:quizapp/Views/Admin/Quiz/update_quiz_screen.dart';
 import 'package:quizapp/Views/User/QuizScreens/quizloadingscreen.dart';
 import 'package:quizapp/constants/colors.dart';
 import 'package:quizapp/constants/mycustombutton.dart';
@@ -188,6 +189,11 @@ class _AdminQuizDetailsScreenState extends State<AdminQuizDetailsScreen> {
                       setState(() {
                         isStandardSelected = true;
                         isCustomizeSelected = false;
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => UpdateQuizScreen(),
+                            ));
                       });
                     },
                   ),

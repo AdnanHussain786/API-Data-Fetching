@@ -11,14 +11,14 @@ import 'package:quizapp/constants/constants.dart';
 import 'package:quizapp/constants/textstylehelper1.dart';
 import 'package:quizapp/widgets/dropdown.dart';
 
-class AddQuizScreen extends StatefulWidget {
-  const AddQuizScreen({super.key});
+class UpdateQuizScreen extends StatefulWidget {
+  const UpdateQuizScreen({super.key});
 
   @override
-  State<AddQuizScreen> createState() => _AddQuizScreenState();
+  State<UpdateQuizScreen> createState() => _UpdateQuizScreenState();
 }
 
-class _AddQuizScreenState extends State<AddQuizScreen> {
+class _UpdateQuizScreenState extends State<UpdateQuizScreen> {
   int selectedColor = 0;
 
   List<String> categories = [
@@ -597,7 +597,7 @@ class _AddQuizScreenState extends State<AddQuizScreen> {
                 height: 30.h,
               ),
               kBigButton(
-                  text: 'Finish',
+                  text: 'Update',
                   onPressed: () {
                     Get.back();
                   }),

@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:quizapp/Views/Admin/Quiz/add_quiz_screen.dart';
 import 'package:quizapp/Views/InAppStore/add_to_store_screen.dart';
+import 'package:quizapp/Views/InAppStore/specific_service_screen.dart';
 import 'package:quizapp/constants/colors.dart';
 import 'package:quizapp/constants/textstylehelper1.dart';
 
@@ -314,84 +315,93 @@ class _InAppStoreScreenState extends State<InAppStoreScreen> {
   Widget buildListViewBuilder(List<Map<String, dynamic>> dataList) {
     return SizedBox(
       height: 119.h, // Set the height
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        itemCount: dataList.length,
-        itemBuilder: (context, index) {
-          final itemData = dataList[index];
-
-          return Container(
-            decoration: BoxDecoration(
-                color: Color(0xffFAFAFA),
-                border: Border.all(
-                  color: Color(0xffF1F1F1),
-                  width: 1.w,
-                ),
-                borderRadius: BorderRadius.circular(5.87.r)),
-            width: 112.w, // Set the width
-            // height: 119.h,
-            margin: const EdgeInsets.only(left: 10).r,
-            child: Padding(
-              padding: const EdgeInsets.all(5.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  // Image without ClipRRect
-                  Container(
-                    width: 103.66.w,
-                    height: 78.22.h,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5.87.r)),
-                    child: Image.asset(
-                      itemData['image'],
-                      fit: BoxFit.fill,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 5.h,
-                  ),
-                  // Container with grey background for text
-                  Row(
-                    children: [
-                      Column(
-                        crossAxisAlignment:
-                            CrossAxisAlignment.start, // Align text to start
-                        children: [
-                          SizedBox(
-                            width: 70.w,
-                            child: Text(
-                              itemData['title'],
-                              style: GoogleFonts.dmSans(
-                                fontSize: 9.sp,
-                                fontWeight: FontWeight.w500,
-                                color: MyCustomColors().kBlackColor,
-                              ),
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                          ),
-                          TextStyleHelper().mytext(
-                            itemData['subtitle'],
-                            6.36.sp,
-                            FontWeight.w500,
-                            MyCustomColors().kBlackColor,
-                          ),
-                        ],
-                      ),
-                      Spacer(),
-                      Container(
-                          width: 21.19.w,
-                          height: 21.19.h,
-                          decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: MyCustomColors().kPrimaryColor1),
-                          child: Image.asset('assets/images/arrowdown.png'))
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          );
+      child: InkWell(
+        onTap: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => SpecificServiceScreen(),
+              ));
         },
+        child: ListView.builder(
+          scrollDirection: Axis.horizontal,
+          itemCount: dataList.length,
+          itemBuilder: (context, index) {
+            final itemData = dataList[index];
+
+            return Container(
+              decoration: BoxDecoration(
+                  color: Color(0xffFAFAFA),
+                  border: Border.all(
+                    color: Color(0xffF1F1F1),
+                    width: 1.w,
+                  ),
+                  borderRadius: BorderRadius.circular(5.87.r)),
+              width: 112.w, // Set the width
+              // height: 119.h,
+              margin: const EdgeInsets.only(left: 10).r,
+              child: Padding(
+                padding: const EdgeInsets.all(5.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // Image without ClipRRect
+                    Container(
+                      width: 103.66.w,
+                      height: 78.22.h,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5.87.r)),
+                      child: Image.asset(
+                        itemData['image'],
+                        fit: BoxFit.fill,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 5.h,
+                    ),
+                    // Container with grey background for text
+                    Row(
+                      children: [
+                        Column(
+                          crossAxisAlignment:
+                              CrossAxisAlignment.start, // Align text to start
+                          children: [
+                            SizedBox(
+                              width: 70.w,
+                              child: Text(
+                                itemData['title'],
+                                style: GoogleFonts.dmSans(
+                                  fontSize: 9.sp,
+                                  fontWeight: FontWeight.w500,
+                                  color: MyCustomColors().kBlackColor,
+                                ),
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ),
+                            TextStyleHelper().mytext(
+                              itemData['subtitle'],
+                              6.36.sp,
+                              FontWeight.w500,
+                              MyCustomColors().kBlackColor,
+                            ),
+                          ],
+                        ),
+                        Spacer(),
+                        Container(
+                            width: 21.19.w,
+                            height: 21.19.h,
+                            decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: MyCustomColors().kPrimaryColor1),
+                            child: Image.asset('assets/images/arrowdown.png'))
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            );
+          },
+        ),
       ),
     );
   }

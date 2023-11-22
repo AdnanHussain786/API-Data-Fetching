@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:quizapp/Views/User/QuizScreens/answerbox.dart';
 import 'package:quizapp/Views/User/QuizScreens/checkingcorrectanswers.dart';
 import 'package:quizapp/Views/User/QuizScreens/lastquestion.dart';
 import 'package:quizapp/Views/User/QuizScreens/questiondata.dart';
@@ -66,6 +67,11 @@ class _QuestionScreenState extends State<QuestionScreen> {
           ),
           Wrap(
             children: List.generate(4, (index) {
+              bool isCorrectAnswer =
+                  options[index] == widget.questionData.correctAnswer;
+              bool isAnswerSelected = selectedIndex == index;
+              bool isSelectedWrong = isAnswerSelected && !isCorrectAnswer;
+
               return InkWell(
                 onTap: () {
                   setState(() {
@@ -73,23 +79,22 @@ class _QuestionScreenState extends State<QuestionScreen> {
                     selectedAnswer = options[index];
                   });
                 },
-                child: Column(
-                  children: [
-                    AnswerBox(
-                      answer: options[index],
-                      color:
-                          selectedIndex == index ? boxColor : backgroundColor,
-                      currentIndex: index,
-                      selectedIndex: selectedIndex,
-                      onClick: () {
-                        setState(() {
-                          selectedIndex = index;
-
-                          selectedAnswer = options[index];
-                        });
-                      },
-                    ),
-                  ],
+                child: AnswerBox(
+                  correctAnswer: widget.questionData.correctAnswer,
+                  options: options,
+                  isCorrectAnswer: isCorrectAnswer,
+                  answer: options[index],
+                  color: isSelectedWrong || isCorrectAnswer
+                      ? boxColor
+                      : backgroundColor,
+                  currentIndex: index,
+                  selectedIndex: selectedIndex,
+                  onClick: () {
+                    setState(() {
+                      selectedIndex = index;
+                      selectedAnswer = options[index];
+                    });
+                  },
                 ),
               );
             }),

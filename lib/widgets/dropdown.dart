@@ -76,6 +76,7 @@ class _MyDropDownState extends State<MyDropDown> {
             size: 1.sp,
           ),
           decoration: InputDecoration(
+              contentPadding: EdgeInsets.all(10),
               suffixIcon: Container(
                   height: 20.h,
                   width: 20.w,
@@ -98,6 +99,7 @@ class _MyDropDownState extends State<MyDropDown> {
                 borderSide:
                     BorderSide(color: Colors.black.withOpacity(0.5), width: 1),
                 borderRadius: BorderRadius.circular(12.r),
+
                 //       ),
               )),
           hint: Text(
@@ -113,7 +115,7 @@ class _MyDropDownState extends State<MyDropDown> {
           onChanged: (_) {
             setState(() {
               selectedValue = _!;
-              widget.onChanged!(_!);
+              widget.onChanged!(_);
             });
           },
         ),
