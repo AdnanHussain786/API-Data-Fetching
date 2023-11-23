@@ -27,8 +27,6 @@ class AnswerBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool isAnswerSelected = currentIndex == selectedIndex;
-
     return InkWell(
       onTap: onClick,
       child: Container(
@@ -39,14 +37,10 @@ class AnswerBox extends StatelessWidget {
           border: Border.all(
             color: currentIndex == selectedIndex
                 ? (isCorrectAnswer
-                    ? Colors.green // Correct answer color
-                    : (isAnswerSelected && isCorrectAnswer)
-                        ? Colors
-                            .green // Change the color of the correct answer when selected and incorrect
-                        : MyCustomColors()
-                            .kFalseColor) // Red border for wrong answer
+                    ? Colors.transparent // No border for correct answer
+                    :(MyCustomColors()
+                        .kFalseColor)) // Red border for wrong answer
                 : MyCustomColors().kSecondaryColor2,
-
             width: 2, // Border width
           ),
           borderRadius: BorderRadius.circular(10),

@@ -91,6 +91,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
                   selectedIndex: selectedIndex,
                   onClick: () {
                     setState(() {
+                      
                       selectedIndex = index;
                       selectedAnswer = options[index];
                     });
