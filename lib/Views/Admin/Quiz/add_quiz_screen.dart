@@ -43,13 +43,12 @@ class _AddQuizScreenState extends State<AddQuizScreen> {
           FontWeight.w500,
           MyCustomColors().kBlackColor,
         ),
-        leading: Icon(
-          Icons.arrow_back_ios,
-          size: 20.sp,
-          color: MyCustomColors().kBlackColor,
+        leading: InkWell(
+          onTap: () => Navigator.pop(context),
+          child: const Icon(Icons.arrow_back_ios),
         ),
-        centerTitle: true,
         iconTheme: IconThemeData(color: MyCustomColors().kBlackColor),
+        centerTitle: true,
       ),
       body: SingleChildScrollView(
         child: Padding(

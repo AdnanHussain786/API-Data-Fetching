@@ -53,7 +53,7 @@ class _AdminProfileScreenState extends State<AdminProfileScreen> {
                         children: [
                           GestureDetector(
                             onTap: () {
-                              // Navigator.pop(context);
+                              Navigator.pop(context);
                             },
                             child: Icon(
                               Icons.arrow_back_ios,
